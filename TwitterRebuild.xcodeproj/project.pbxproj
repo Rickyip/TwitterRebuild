@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		254DA6E320FB2DEA007EB9B6 /* HomeDatasourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254DA6E220FB2DEA007EB9B6 /* HomeDatasourceController.swift */; };
+		254DA6E820FB3218007EB9B6 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254DA6E720FB3218007EB9B6 /* Cells.swift */; };
+		254DA6EA20FB3239007EB9B6 /* HomeDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254DA6E920FB3239007EB9B6 /* HomeDatasource.swift */; };
 		25FD040F20F9D96300CFC95A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FD040E20F9D96300CFC95A /* AppDelegate.swift */; };
 		25FD041620F9D96600CFC95A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25FD041520F9D96600CFC95A /* Assets.xcassets */; };
 		25FD041920F9D96600CFC95A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25FD041720F9D96600CFC95A /* LaunchScreen.storyboard */; };
@@ -16,6 +19,9 @@
 
 /* Begin PBXFileReference section */
 		21CA378A65EE46BC7AD45D1D /* Pods_TwitterRebuild.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwitterRebuild.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		254DA6E220FB2DEA007EB9B6 /* HomeDatasourceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDatasourceController.swift; sourceTree = "<group>"; };
+		254DA6E720FB3218007EB9B6 /* Cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
+		254DA6E920FB3239007EB9B6 /* HomeDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDatasource.swift; sourceTree = "<group>"; };
 		25FD040B20F9D96300CFC95A /* TwitterRebuild.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterRebuild.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25FD040E20F9D96300CFC95A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25FD041520F9D96600CFC95A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -38,6 +44,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		254DA6E420FB31EF007EB9B6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				254DA6E220FB2DEA007EB9B6 /* HomeDatasourceController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		254DA6E520FB31F7007EB9B6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				254DA6E920FB3239007EB9B6 /* HomeDatasource.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		254DA6E620FB31FB007EB9B6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				254DA6E720FB3218007EB9B6 /* Cells.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		25FD040220F9D96300CFC95A = {
 			isa = PBXGroup;
 			children = (
@@ -59,6 +89,9 @@
 		25FD040D20F9D96300CFC95A /* TwitterRebuild */ = {
 			isa = PBXGroup;
 			children = (
+				254DA6E620FB31FB007EB9B6 /* View */,
+				254DA6E520FB31F7007EB9B6 /* Model */,
+				254DA6E420FB31EF007EB9B6 /* Controller */,
 				25FD040E20F9D96300CFC95A /* AppDelegate.swift */,
 				25FD042020F9DA3900CFC95A /* HomeController.swift */,
 				25FD041520F9D96600CFC95A /* Assets.xcassets */,
@@ -196,7 +229,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				254DA6EA20FB3239007EB9B6 /* HomeDatasource.swift in Sources */,
 				25FD040F20F9D96300CFC95A /* AppDelegate.swift in Sources */,
+				254DA6E820FB3218007EB9B6 /* Cells.swift in Sources */,
+				254DA6E320FB2DEA007EB9B6 /* HomeDatasourceController.swift in Sources */,
 				25FD042120F9DA3900CFC95A /* HomeController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
