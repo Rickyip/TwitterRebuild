@@ -13,7 +13,8 @@ class HomeDatasource: Datasource {
     let users: [User] = {
         let trumpUser = User(name: "Donald J. Trump", username: "@realdonaldtrump", bioText: "45th President of the United States of America🇺🇸", profileImage: #imageLiteral(resourceName: "trump"))
         let whitehouseUser = User(name: "The White House", username: "@WhiteHouse", bioText: "Welcome to @WhiteHouse! Follow for the latest from President @realDonaldTrump and his Administration. Tweets may be archived: http://whitehouse.gov/privacy ", profileImage: #imageLiteral(resourceName: "whitehouse"))
-        return [trumpUser, whitehouseUser]
+        let germanyUser = User(name: "Germany", username: "@dfb_team_en", bioText: "#DieMannschaft in English 🇩🇪🇬🇧 News from the Germany national teams & DFB! DE: @DFB_Team | ES: @DFB_Team_ES Imprint: https://www.dfb.de/en/misc/imprint/ …", profileImage: #imageLiteral(resourceName: "germanyt"))
+        return [trumpUser, whitehouseUser, germanyUser]
     }()
     
     override func footerClasses() -> [DatasourceCell.Type]? {
