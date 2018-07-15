@@ -24,6 +24,14 @@ extension HomeDatasourceController {
         navigationController?.navigationBar.backgroundColor = .white
         // to make it purely white instead of having the default light color
         navigationController?.navigationBar.isTranslucent = false
+        // remove the default line under the nav bar
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        
+        let navBarSeparatorView = UIView()
+        navBarSeparatorView.backgroundColor = UIColor(r: 230, g: 230, b: 230)
+        view.addSubview(navBarSeparatorView)
+        navBarSeparatorView.anchor(view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0.5)
     }
     
     private func setupLeftNavItems() {
