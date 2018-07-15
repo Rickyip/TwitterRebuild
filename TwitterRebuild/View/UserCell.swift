@@ -1,5 +1,5 @@
 //
-//  Cells.swift
+//  UserCell.swift
 //  TwitterRebuild
 //
 //  Created by RickYip on 15/7/2018.
@@ -8,53 +8,21 @@
 
 import LBTAComponents
 
-let twitterBlue = UIColor(r: 61, g: 167, b: 244)
-
-class UserFooter: DatasourceCell {
-    
-    let textLabel: UILabel = {
-        let label = UILabel()
-        label.text = "SHOW ME MORE"
-        label.font = UIFont.systemFont(ofSize: 15)
-        label.textColor = twitterBlue
-        return label
-    }()
-    
-    override func setupViews() {
-        super.setupViews()
-        addSubview(textLabel)
-        textLabel.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 12, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
-    }
-}
-
-
-class UserHeader: DatasourceCell {
-    
-    let textLabel: UILabel = {
-        let label = UILabel()
-        label.text = "FRIENDS TO FOLLOW"
-        label.font = UIFont.systemFont(ofSize: 16)
-        return label
-    }()
-    
-    override func setupViews() {
-        super.setupViews()
-        addSubview(textLabel)
-        textLabel.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 12, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
-    }
-}
-
 class UserCell: DatasourceCell {
     
     override var datasourceItem: Any? {
         didSet{
-//            nameLabel.text = datasourceItem as? String
+            guard let user = datasourceItem as? User else { return }
+            nameLabel.text = user.name
+            usernameLabel.text = user.username
+            bioTextView.text = user.bioText
+            profileImageView.image = user.profileImage
         }
     }
     
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = #imageLiteral(resourceName: "Germany")
+        imageView.image = #imageLiteral(resourceName: "trump")
         imageView.layer.cornerRadius = 5
         imageView.clipsToBounds = true
         
@@ -63,14 +31,14 @@ class UserCell: DatasourceCell {
     
     let nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Germany"
+        label.text = "Donald J. Trump"
         label.font = UIFont.boldSystemFont(ofSize: 16)
         return label
     }()
     
     let usernameLabel: UILabel = {
         let label = UILabel()
-        label.text = "@Germany_Official"
+        label.text = "@realdonaldtrump"
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = UIColor(r: 130, g: 130, b: 130)
         return label
@@ -78,7 +46,7 @@ class UserCell: DatasourceCell {
     
     let bioTextView: UITextView = {
         let textView = UITextView()
-        textView.text = "This is the offcial Twitter Account for Germany international Football team. FIFA World Cup 2014 Champion Team."
+        textView.text = "45th President of the United States of America🇺🇸"
         textView.font = UIFont.systemFont(ofSize: 15)
         textView.backgroundColor = .clear
         return textView
@@ -102,6 +70,9 @@ class UserCell: DatasourceCell {
     
     override func setupViews() {
         super.setupViews()
+        
+        separatorLineView.isHidden = false
+        separatorLineView.backgroundColor = UIColor(r: 230, g: 230, b: 230)
         
         addSubview(profileImageView)
         profileImageView.anchor(self.topAnchor, left: self.leftAnchor, bottom: nil, right: nil, topConstant: 12, leftConstant: 12, bottomConstant: 0, rightConstant: 0, widthConstant: 50, heightConstant: 50)
