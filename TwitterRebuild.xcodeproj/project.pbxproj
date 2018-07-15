@@ -12,6 +12,7 @@
 		254DA6EA20FB3239007EB9B6 /* HomeDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254DA6E920FB3239007EB9B6 /* HomeDatasource.swift */; };
 		254DA6EC20FB508C007EB9B6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254DA6EB20FB508C007EB9B6 /* User.swift */; };
 		254DA6EE20FB622E007EB9B6 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254DA6ED20FB622E007EB9B6 /* UserCell.swift */; };
+		254DA6F020FB7CE2007EB9B6 /* HomeDatasourceController+Navbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254DA6EF20FB7CE2007EB9B6 /* HomeDatasourceController+Navbar.swift */; };
 		25FD040F20F9D96300CFC95A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FD040E20F9D96300CFC95A /* AppDelegate.swift */; };
 		25FD041620F9D96600CFC95A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25FD041520F9D96600CFC95A /* Assets.xcassets */; };
 		25FD041920F9D96600CFC95A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25FD041720F9D96600CFC95A /* LaunchScreen.storyboard */; };
@@ -26,6 +27,7 @@
 		254DA6E920FB3239007EB9B6 /* HomeDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDatasource.swift; sourceTree = "<group>"; };
 		254DA6EB20FB508C007EB9B6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		254DA6ED20FB622E007EB9B6 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		254DA6EF20FB7CE2007EB9B6 /* HomeDatasourceController+Navbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeDatasourceController+Navbar.swift"; sourceTree = "<group>"; };
 		25FD040B20F9D96300CFC95A /* TwitterRebuild.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterRebuild.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25FD040E20F9D96300CFC95A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25FD041520F9D96600CFC95A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -52,6 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				254DA6E220FB2DEA007EB9B6 /* HomeDatasourceController.swift */,
+				254DA6EF20FB7CE2007EB9B6 /* HomeDatasourceController+Navbar.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				254DA6EC20FB508C007EB9B6 /* User.swift in Sources */,
 				254DA6E820FB3218007EB9B6 /* UserHeaderFooter.swift in Sources */,
 				254DA6E320FB2DEA007EB9B6 /* HomeDatasourceController.swift in Sources */,
+				254DA6F020FB7CE2007EB9B6 /* HomeDatasourceController+Navbar.swift in Sources */,
 				25FD042120F9DA3900CFC95A /* HomeController.swift in Sources */,
 				254DA6EE20FB622E007EB9B6 /* UserCell.swift in Sources */,
 			);
