@@ -17,7 +17,12 @@ class HomeDatasource: Datasource {
         return [trumpUser, whitehouseUser, germanyUser]
     }()
     
-    let tweets = ["Tweet 1","Tweet 1"]
+    let tweets: [Tweet] = {
+        let trumpUser = User(name: "Donald J. Trump", username: "@realdonaldtrump", bioText: "45th President of the United States of America🇺🇸", profileImage: #imageLiteral(resourceName: "trump"))
+        let tweet1 = Tweet(user: trumpUser, message: "Our relationship with Russia has NEVER been worse thanks to many years of U.S. foolishness and stupidity and now, the Rigged Witch Hunt!")
+        let tweet2 = Tweet(user: trumpUser, message: "President Obama thought that Crooked Hillary was going to win the election, so when he was informed by the FBI about Russian Meddling, he said it couldn’t happen, was no big deal, & did NOTHING about it. When I won it became a big deal and the Rigged Witch Hunt headed by Strzok!")
+        return [tweet1, tweet2]
+    }()
     
     override func footerClasses() -> [DatasourceCell.Type]? {
         return [UserFooter.self]
@@ -33,6 +38,9 @@ class HomeDatasource: Datasource {
     }
     
     override func item(_ indexPath: IndexPath) -> Any? {
+        if indexPath.section == 1 {
+            return tweets[indexPath.item]
+        }
         return users[indexPath.item]
     }
     
