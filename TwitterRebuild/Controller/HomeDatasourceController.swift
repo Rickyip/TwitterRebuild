@@ -21,6 +21,11 @@ class HomeDatasourceController: DatasourceController {
         self.datasource = homeDatasource
     }
     
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        // will re-layout when the screen is rotated
+        collectionViewLayout.invalidateLayout()
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         // 0 spacing between each item
         return 0
