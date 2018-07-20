@@ -13,31 +13,20 @@ import SwiftyJSON
 class HomeDatasource: Datasource, JSONDecodable {
     
     let users: [User]
+    let tweets: [Tweet]
     
     required init(json: JSON) throws {
-        
-        var users = [User]()
-        
-        let array = json["users"].array
-        
-        for userjson in array! {
-            let name = userjson["name"].stringValue
-            let username = userjson["username"].stringValue
-            let bio = userjson["bio"].stringValue
-            
-            let user = User(name: name, username: username, bioText: bio, profileImage: UIImage())
-            users.append(user)
+        let userJsonArray = json["users"].array
+        self.users = userJsonArray!.map {
+            // map return array of user, $0 is the json object inside of the array
+            User(json: $0)
         }
-        self.users = users
-        print("Json init, having \(users.count) users")
-    }
     
-    let tweets: [Tweet] = {
-        let trumpUser = User(name: "Donald J. Trump", username: "@realdonaldtrump", bioText: "45th President of the United States of America🇺🇸", profileImage: #imageLiteral(resourceName: "trump"))
-        let tweet1 = Tweet(user: trumpUser, message: "Our relationship with Russia has NEVER been worse thanks to many years of U.S. foolishness and stupidity and now, the Rigged Witch Hunt!")
-        let tweet2 = Tweet(user: trumpUser, message: "President Obama thought that Crooked Hillary was going to win the election, so when he was informed by the FBI about Russian Meddling, he said it couldn’t happen, was no big deal, & did NOTHING about it. When I won it became a big deal and the Rigged Witch Hunt headed by Strzok!")
-        return [tweet1, tweet2]
-    }()
+        let tweetJsonArray = json["tweets"].array
+        self.tweets = tweetJsonArray!.map {
+            Tweet(json: $0)
+        }
+    }
     
     override func footerClasses() -> [DatasourceCell.Type]? {
         return [UserFooter.self]

@@ -20,13 +20,10 @@ struct Service {
         let request: APIRequest<HomeDatasource, JSONError> = tron.swiftyJSON.request("/twitter/home")
         
         request.perform(withSuccess: { (homeDatasource) in
-            print("Success  ")
-            
+            print("Success  fetchHomeFeed  ")
             completion(homeDatasource)
-//            self.datasource = homeDatasource
-            
         }) { (err) in
-            print("Err  ", err)
+            print("Err  fetchHomeFeed  ", err)
         }
     }
     

@@ -16,6 +16,7 @@ class HomeDatasourceController: DatasourceController {
         collectionView?.backgroundColor = UIColor(r: 232, g: 236, b: 241)
         
         setupNavigationBarItems()
+        
         Service.sharedInstance.fetchHomeFeed { (homeDatasource) in
             self.datasource = homeDatasource
         }
