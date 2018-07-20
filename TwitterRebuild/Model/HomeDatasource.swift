@@ -7,15 +7,30 @@
 //
 
 import LBTAComponents
+import TRON
+import SwiftyJSON
 
-class HomeDatasource: Datasource {
+class HomeDatasource: Datasource, JSONDecodable {
     
-    let users: [User] = {
-        let trumpUser = User(name: "Donald J. Trump", username: "@realdonaldtrump", bioText: "45th President of the United States of America🇺🇸", profileImage: #imageLiteral(resourceName: "trump"))
-        let whitehouseUser = User(name: "The White House", username: "@WhiteHouse", bioText: "Welcome to @WhiteHouse! Follow for the latest from President @realDonaldTrump and his Administration. Tweets may be archived: http://whitehouse.gov/privacy ", profileImage: #imageLiteral(resourceName: "whitehouse"))
-        let germanyUser = User(name: "Germany", username: "@dfb_team_en", bioText: "#DieMannschaft in English 🇩🇪🇬🇧 News from the Germany national teams & DFB! DE: @DFB_Team | ES: @DFB_Team_ES Imprint: https://www.dfb.de/en/misc/imprint/ …", profileImage: #imageLiteral(resourceName: "germanyt"))
-        return [trumpUser, whitehouseUser, germanyUser]
-    }()
+    let users: [User]
+    
+    required init(json: JSON) throws {
+        
+        var users = [User]()
+        
+        let array = json["users"].array
+        
+        for userjson in array! {
+            let name = userjson["name"].stringValue
+            let username = userjson["username"].stringValue
+            let bio = userjson["bio"].stringValue
+            
+            let user = User(name: name, username: username, bioText: bio, profileImage: UIImage())
+            users.append(user)
+        }
+        self.users = users
+        print("Json init, having \(users.count) users")
+    }
     
     let tweets: [Tweet] = {
         let trumpUser = User(name: "Donald J. Trump", username: "@realdonaldtrump", bioText: "45th President of the United States of America🇺🇸", profileImage: #imageLiteral(resourceName: "trump"))

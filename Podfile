@@ -9,4 +9,6 @@ target 'TwitterRebuild' do
 
   pod 'LBTAComponents', '~> 1.0.2'
 
+  pod 'TRON', '~> 4.0'
+
 end
