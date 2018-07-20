@@ -7,8 +7,6 @@
 //
 
 import LBTAComponents
-import TRON
-import SwiftyJSON
 
 class HomeDatasourceController: DatasourceController {
     
@@ -18,56 +16,9 @@ class HomeDatasourceController: DatasourceController {
         collectionView?.backgroundColor = UIColor(r: 232, g: 236, b: 241)
         
         setupNavigationBarItems()
-        
-//        let homeDatasource = HomeDatasource()
-//        self.datasource = homeDatasource
-        fetchHomeFeed()
-    }
-    
-    let tron = TRON(baseURL: "https://api.letsbuildthatapp.com")
-    
-    class Home: JSONDecodable {
-        
-        let users: [User]
-        
-        required init(json: JSON) throws {
-            
-            var users = [User]()
-            
-            let array = json["users"].array
-            
-            for userjson in array! {
-                let name = userjson["name"].stringValue
-                let username = userjson["username"].stringValue
-                let bio = userjson["bio"].stringValue
-                
-                let user = User(name: name, username: username, bioText: bio, profileImage: UIImage())
-                users.append(user)
-            }
-            self.users = users
-            print("Json init, having \(users.count) users")
-        }
-    }
-    
-    class JSONError: JSONDecodable {
-        required init(json: JSON) {
-            print("Json error")
-        }
-    }
-    
-    fileprivate func fetchHomeFeed() {
-        // start fetching json
-        
-        let request: APIRequest<HomeDatasource, JSONError> = tron.swiftyJSON.request("/twitter/home")
-        
-        request.perform(withSuccess: { (homeDatasource) in
-            print("Success  ")
+        Service.sharedInstance.fetchHomeFeed { (homeDatasource) in
             self.datasource = homeDatasource
-        }) { (err) in
-            print("Err  ", err)
         }
-    
-        
     }
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
