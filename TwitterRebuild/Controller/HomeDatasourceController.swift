@@ -7,17 +7,48 @@
 //
 
 import LBTAComponents
+import TRON
 
 class HomeDatasourceController: DatasourceController {
     
+    let errorMessageLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Apologies something went wrong. Please try again later..."
+        label.textAlignment = .center
+        label.numberOfLines = 0 // wrap text
+        label.isHidden = true
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.addSubview(errorMessageLabel)
+        errorMessageLabel.fillSuperview() // LBTA method call
         
         collectionView?.backgroundColor = UIColor(r: 232, g: 236, b: 241)
         
         setupNavigationBarItems()
         
-        Service.sharedInstance.fetchHomeFeed { (homeDatasource) in
+        Service.sharedInstance.fetchHomeFeed { (homeDatasource, err) in
+            if let err = err {
+                self.errorMessageLabel.isHidden = false
+                
+                if let apiError = err as? APIError<Service.JSONError> {
+                    if let code = apiError.response?.statusCode {
+                        switch code {
+                            case 200:
+                                self.errorMessageLabel.text = "JSON parsing ERROR\n"
+                            case 404:
+                                self.errorMessageLabel.text = "Netwoek ERROR\n"
+                            default:
+                                self.errorMessageLabel.text = "Apologies something went wrong. Please try again later..."
+                        }
+                    }
+                }
+                
+                return
+            }
             self.datasource = homeDatasource
         }
     }

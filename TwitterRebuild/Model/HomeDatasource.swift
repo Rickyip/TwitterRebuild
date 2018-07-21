@@ -16,14 +16,17 @@ class HomeDatasource: Datasource, JSONDecodable {
     let tweets: [Tweet]
     
     required init(json: JSON) throws {
-        let userJsonArray = json["users"].array
-        self.users = userJsonArray!.map {
+        guard let userJsonArray = json["users"].array, let tweetJsonArray = json["tweets"].array else {
+            throw NSError(domain: "com.yipkaming.TwitterRebuild",
+                          code: 1,
+                          userInfo: [NSLocalizedDescriptionKey: "JSON format is not valid"])
+        }
+
+        self.users = userJsonArray.map {
             // map return array of user, $0 is the json object inside of the array
             User(json: $0)
         }
-    
-        let tweetJsonArray = json["tweets"].array
-        self.tweets = tweetJsonArray!.map {
+        self.tweets = tweetJsonArray.map {
             Tweet(json: $0)
         }
     }
