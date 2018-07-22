@@ -64,21 +64,33 @@ class HomeDatasourceController: DatasourceController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if let user = self.datasource?.item(indexPath) as? User {
+        // user section
+        if indexPath.section == 0 {
+            guard let user = self.datasource?.item(indexPath) as? User else { return .zero }
             // estimate the height of the cell based on the bio text
+
+            let height = estimatedHeightForText(user.bioText)
+            return CGSize(width: view.frame.width, height: height + 66)
             
-            // width - profile image view - space with the edge and padding
-            let approximateWidthOfVioTextView = view.frame.width - 50 - 12 - 12 - 2
-            // height is a abitary large number
-            let size = CGSize(width: approximateWidthOfVioTextView, height: 1000)
+        } else if indexPath.section == 1 {
+            // tweet section
+            guard let tweet = self.datasource?.item(indexPath) as? Tweet else { return .zero }
+            let height = estimatedHeightForText(tweet.message)
             
-            let attributes = [kCTFontAttributeName as NSAttributedStringKey: UIFont.systemFont(ofSize: 15)]
-            
-            let estimatedFrame = NSString(string: user.bioText).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
-            
-            return CGSize(width: view.frame.width, height: estimatedFrame.height + 66)
+            return CGSize(width: view.frame.width, height: height + 74)
         }
+        
         return CGSize(width: view.frame.width, height: 200)
+    }
+    
+    private func estimatedHeightForText(_ text: String) -> CGFloat {
+        // width - profile image view - space with the edge and padding
+        let approximateWidthOfVioTextView = view.frame.width - 50 - 12 - 12 - 2
+        // height is a abitary large number
+        let size = CGSize(width: approximateWidthOfVioTextView, height: 1000)
+        let attributes = [kCTFontAttributeName as NSAttributedStringKey: UIFont.systemFont(ofSize: 15)]
+        let estimatedFrame = NSString(string: text).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
+        return estimatedFrame.height
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
