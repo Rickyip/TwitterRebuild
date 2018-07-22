@@ -10,6 +10,13 @@ import LBTAComponents
 import TRON
 import SwiftyJSON
 
+// restrict it to use just on JSON array
+extension Collection where Iterator.Element == JSON{
+    func decode<T: JSONDecodable>() throws -> [T] {
+        return try map({ try T(json: $0) })
+    }
+}
+
 class HomeDatasource: Datasource, JSONDecodable {
     
     let users: [User]
@@ -22,13 +29,15 @@ class HomeDatasource: Datasource, JSONDecodable {
                           userInfo: [NSLocalizedDescriptionKey: "JSON format is not valid"])
         }
 
-        self.users = userJsonArray.map {
-            // map return array of user, $0 is the json object inside of the array
-            User(json: $0)
-        }
-        self.tweets = tweetJsonArray.map {
-            Tweet(json: $0)
-        }
+//        self.users = userJsonArray.map {
+//            // map return array of user, $0 is the json object inside of the array
+//            User(json: $0)
+//        }
+//        self.tweets = tweetJsonArray.map {
+//            Tweet(json: $0)
+//        }
+        self.users = try userJsonArray.decode()
+        self.tweets = try tweetJsonArray.decode()
     }
     
     override func footerClasses() -> [DatasourceCell.Type]? {
